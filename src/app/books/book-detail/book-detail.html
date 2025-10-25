@@ -1,0 +1,71 @@
+<div class="book-details-container">
+
+  @if (loading) {
+    <div class="loading-container">
+      <div class="loading-pulse">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading book details...</p>
+      </div>
+    </div>
+  } @else if (error) {
+    <div class="error-container">
+      <p class="error-message">{{ error }}</p>
+      <button (click)="goBack()" class="btn btn-secondary mt-4">
+        Back to Books
+      </button>
+    </div>
+  } @else if (book) {
+    <div class="book-card">
+      <div class="book-layout">
+
+        <div class="book-cover-wrapper">
+          @if (book.cover) {
+            <img [src]="book.cover" [alt]="book.title" class="book-cover-image" />
+          } @else {
+            <div class="book-cover-placeholder">
+              No cover available
+            </div>
+          }
+        </div>
+
+        <div class="book-info">
+          <div class="book-header">
+            <div>
+              <h1 class="book-title">{{ book.title }}</h1>
+              @if (book.subtitle) {
+                <p class="book-subtitle">{{ book.subtitle }}</p>
+              }
+            </div>
+            <span class="book-price">
+              {{ book.price }}
+            </span>
+          </div>
+
+          <div class="book-meta">
+            <p class="book-author">{{ book.author }}</p>
+            <p class="meta-item">Publisher: {{ book.publisher }}</p>
+            <p class="meta-item">ISBN: {{ book.isbn }}</p>
+            <p class="meta-item">Pages: {{ book.numPages }}</p>
+          </div>
+
+          @if (book.abstract) {
+            <div class="book-abstract">
+              <h2 class="abstract-title">Abstract</h2>
+              <p class="abstract-text">{{ book.abstract }}</p>
+            </div>
+          }
+
+          <div class="book-actions">
+            <button (click)="goBack()" class="btn btn-secondary">
+              Back to Books
+            </button>
+            <a [routerLink]="['/books', book.id, 'edit']" class="btn btn-primary">
+              Edit Book
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+</div>

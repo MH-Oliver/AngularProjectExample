@@ -1,11 +1,13 @@
 import { Routes } from '@angular/router';
-import { BookDetailComponent } from './books/book-detail.component';
-import { BookEditComponent } from './books/book-edit.component';
-import { BookListComponent } from './books/book-list.component';
+
+
+import { BookDetail } from './books/book-detail/book-detail';
+import { BookList } from './books/book-list/book-list';
+import { BookEdit } from './books/book-edit/book-edit';
 
 export const routes: Routes = [
-  { path: '', component: BookListComponent },
-  { path: 'books/:id', component: BookDetailComponent },
-  { path: 'books/:id/edit', component: BookEditComponent },
+  { path: '', component: BookList },
+  { path: 'books/:id', component: BookDetail },
+  { path: 'books/:id/edit', component: BookEdit },
   { path: '**', redirectTo: '' }
 ];

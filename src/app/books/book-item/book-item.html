@@ -1,0 +1,52 @@
+<div class="book-item-card">
+
+  <!-- Cover-Bereich -->
+  <div class="book-cover-container">
+    @if (book.cover) {
+      <img
+        [src]="book.cover"
+        [alt]="book.title"
+        class="book-cover-image"
+      />
+    } @else {
+      <div class="book-cover-placeholder">
+        <span class="placeholder-text">No cover available</span>
+      </div>
+    }
+  </div>
+
+  <!-- Info-Bereich -->
+  <div class="book-info-container">
+    <h2 class="book-title">{{ book.title }}</h2>
+
+    @if (book.subtitle) {
+      <p class="book-subtitle">{{ book.subtitle }}</p>
+    }
+
+    <div class="book-meta-footer">
+      <p>
+        <span class="book-author">{{ book.author }}</span>
+      </p>
+      @if (book.isbn) {
+        <p class="book-isbn">ISBN: {{ book.isbn }}</p>
+      }
+    </div>
+
+    <!-- Aktionen/Buttons -->
+    <div class="book-actions">
+      <a
+        [routerLink]="['/books', book.id]"
+        class="btn btn-secondary"
+      >
+        View Details
+      </a>
+      <a
+        [routerLink]="['/books', book.id, 'edit']"
+        class="btn btn-primary"
+      >
+        Edit Book
+      </a>
+    </div>
+  </div>
+
+</div>

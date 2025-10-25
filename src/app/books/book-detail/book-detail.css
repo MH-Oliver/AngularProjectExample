@@ -1,0 +1,236 @@
+/* Animationen für den Lade-Spinner */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* --- Container --- */
+.book-details-container {
+  max-width: 56rem; /* max-w-4xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem;
+  padding-top: 3rem; /* py-12 */
+  padding-bottom: 3rem;
+  /* Die 'container'-Klasse von Tailwind fügt je nach Breakpoint
+     auch 100% Breite hinzu, aber 'max-w-4xl' und 'mx-auto'
+     sollten den Job meist erledigen. */
+}
+
+/* --- Ladezustand --- */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5rem; /* py-20 */
+  padding-bottom: 5rem;
+}
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loading-spinner {
+  height: 4rem; /* h-16 */
+  width: 4rem; /* w-16 */
+  border-radius: 9999px; /* rounded-full */
+  border-width: 4px; /* border-4 */
+  border-top-color: rgb(29 78 216); /* border-t-blue-700 */
+  border-right-color: rgb(29 78 216); /* border-r-blue-700 */
+  border-bottom-color: rgb(229 231 235); /* border-b-gray-200 */
+  border-left-color: rgb(229 231 235); /* border-l-gray-200 */
+  animation: spin 1s linear infinite;
+}
+.loading-text {
+  margin-top: 1rem; /* mt-4 */
+  color: rgb(75 85 99); /* text-gray-600 */
+}
+
+/* --- Fehlerzustand --- */
+.error-container {
+  padding: 1.5rem; /* p-6 */
+  text-align: center;
+  background-color: rgb(254 242 242); /* bg-red-50 */
+  border-radius: 0.5rem; /* rounded-lg */
+}
+.error-message {
+  color: rgb(185 28 28); /* text-red-700 */
+  font-weight: 500; /* font-medium */
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+/* Die .mt-4 Klasse für den Button */
+.mt-4 {
+  margin-top: 1rem;
+}
+
+
+/* --- Buch-Details --- */
+.book-card {
+  background-color: #fff;
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* shadow-lg */
+  overflow: hidden;
+}
+.book-layout {
+  display: flex;
+  flex-direction: column; /* Standard (mobil) */
+}
+
+/* Cover-Spalte */
+.book-cover-wrapper {
+  width: 100%;
+  background-color: rgb(243 244 246); /* bg-gray-100 */
+  padding: 1.5rem; /* p-6 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.book-cover-image {
+  max-width: 100%;
+  max-height: 24rem; /* max-h-96 */
+  object-fit: contain;
+}
+.book-cover-placeholder {
+  width: 100%;
+  height: 16rem; /* h-64 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(229 231 235); /* bg-gray-200 */
+  color: rgb(107 114 128); /* text-gray-500 */
+}
+
+/* Info-Spalte */
+.book-info {
+  width: 100%;
+  padding: 2rem; /* p-8 */
+}
+.book-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* items-start */
+  margin-bottom: 1.5rem; /* mb-6 */
+}
+.book-title {
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 2.25rem;
+  font-weight: 700; /* font-bold */
+  color: rgb(31 41 55); /* text-gray-800 */
+}
+.book-subtitle {
+  font-size: 1.25rem; /* text-xl */
+  line-height: 1.75rem;
+  color: rgb(75 85 99); /* text-gray-600 */
+  margin-top: 0.5rem; /* mt-2 */
+}
+.book-price {
+  padding-left: 0.75rem; /* px-3 */
+  padding-right: 0.75rem;
+  padding-top: 0.25rem; /* py-1 */
+  padding-bottom: 0.25rem;
+  background-color: rgb(219 234 254); /* bg-blue-100 */
+  color: rgb(30 64 175); /* text-blue-800 */
+  border-radius: 9999px; /* rounded-full */
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.25rem;
+  font-weight: 500; /* font-medium */
+}
+
+/* Meta-Infos */
+.book-meta {
+  margin-bottom: 1.5rem; /* mb-6 */
+}
+.book-author {
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  color: rgb(29 78 216); /* text-blue-700 */
+}
+.meta-item {
+  color: rgb(75 85 99); /* text-gray-600 */
+}
+
+/* Abstract */
+.book-abstract {
+  margin-bottom: 2rem; /* mb-8 */
+}
+.abstract-title {
+  font-size: 1.25rem; /* text-xl */
+  line-height: 1.75rem;
+  font-weight: 600; /* font-semibold */
+  color: rgb(31 41 55); /* text-gray-800 */
+  margin-bottom: 0.75rem; /* mb-3 */
+}
+.abstract-text {
+  color: rgb(55 65 81); /* text-gray-700 */
+}
+
+/* Aktionen */
+.book-actions {
+  display: flex;
+}
+/* space-x-4: Fügt allen Elementen außer dem ersten einen linken Abstand hinzu */
+.book-actions > * + * {
+  margin-left: 1rem;
+}
+
+/* --- Wiederverwendbare Button-Stile --- */
+.btn {
+  padding: 0.5rem 1.5rem; /* px-6 py-2 */
+  border-radius: 0.375rem; /* rounded-md */
+  /* transition-colors */
+  transition-property: color, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  text-decoration: none; /* Für <a>-Tags */
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: rgb(37 99 235); /* bg-blue-600 */
+  color: #fff; /* text-white */
+  display: inline-flex;
+  align-items: center;
+}
+.btn-primary:hover {
+  background-color: rgb(29 78 216); /* hover:bg-blue-700 */
+}
+
+.btn-secondary {
+  color: rgb(37 99 235); /* text-blue-600 */
+  border: 1px solid rgb(37 99 235); /* border border-blue-600 */
+}
+.btn-secondary:hover {
+  background-color: rgb(239 246 255); /* hover:bg-blue-50 */
+}
+
+
+/* --- Responsive Stile --- */
+/* 'md' Breakpoint = min-width: 768px */
+@media (min-width: 768px) {
+  .book-layout {
+    flex-direction: row; /* md:flex-row */
+  }
+  .book-cover-wrapper {
+    width: 33.333333%; /* md:w-1/3 */
+  }
+  .book-info {
+    width: 66.666667%; /* md:w-2/3 */
+  }
+}

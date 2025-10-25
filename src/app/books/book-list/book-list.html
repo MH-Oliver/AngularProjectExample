@@ -1,0 +1,76 @@
+<div class="book-list-container">
+  <h1 class="list-title">Book Collection</h1>
+
+  <!-- Suchleiste -->
+  <div class="search-container">
+    <div class="search-bar">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchChange()"
+        placeholder="Search for books..."
+        class="search-input"
+      />
+      @if (searchTerm) {
+        <button (click)="clearSearch()" class="clear-search-btn">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Ladezustand -->
+  @if (loading) {
+    <div class="loading-container">
+      <div class="loading-pulse">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading books...</p>
+      </div>
+    </div>
+  } @else {
+    <!-- Bücher-Raster -->
+    <div class="book-grid">
+
+      @for (book of books; track trackById) {
+        <app-book-item [book]="book"></app-book-item>
+      }
+
+      <!-- Keine Ergebnisse gefunden -->
+      @if (books.length === 0) {
+        <div class="no-results-container">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="no-results-icon"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+            />
+          </svg>
+          <p class="no-results-title">
+            {{ searchTerm ? 'No books match your search' : 'No books available' }}
+          </p>
+          <p class="no-results-subtitle">
+            {{ searchTerm ? 'Try different search terms or clear the search' : 'Check back later' }}
+          </p>
+
+          @if (searchTerm) {
+            <button
+              (click)="clearSearch()"
+              class="btn btn-primary no-results-button"
+            >
+              Clear Search
+            </button>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>
