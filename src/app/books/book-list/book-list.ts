@@ -56,4 +56,8 @@ private loadBooks(search?: string): void {
   trackById(index: number, book: Book): string {
     return book.id;
   }
+
+  printAuthor(author: string) {
+    console.log('Author clicked: ' + author)
+  }
 }

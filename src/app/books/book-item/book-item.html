@@ -25,7 +25,7 @@
 
     <div class="book-meta-footer">
       <p>
-        <span class="book-author">{{ book.author }}</span>
+        <span class="book-author" (click)="selectedAuthor.emit(book.author)">{{ book.author }}</span>
       </p>
       @if (book.isbn) {
         <p class="book-isbn">ISBN: {{ book.isbn }}</p>

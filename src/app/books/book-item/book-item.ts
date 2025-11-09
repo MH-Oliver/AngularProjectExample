@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Book } from '../book';
 
@@ -13,4 +13,5 @@ import { Book } from '../book';
 })
 export class BookItem {
   @Input() book!: Book;
+  @Output() selectedAuthor = new EventEmitter<string>();
 }
